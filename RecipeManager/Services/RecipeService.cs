@@ -59,10 +59,13 @@ namespace RecipeManager.Services
 
         public Recipe Update(Recipe recipe)
         {
+            // Find the recipe and store it in var
             var dbRecipeUpdate = _db.Recipes.Find(recipe.Id);
             
+            // If recipe is not null (it exists)
             if(dbRecipeUpdate != null)
             {
+                // grab that recipe, and update it, and save changes in db
                 dbRecipeUpdate = recipe;
                 dbRecipeUpdate.DateUpdated = DateTime.Now;
                 _db.SaveChanges();
